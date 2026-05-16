@@ -1,18 +1,18 @@
 // @ts-nocheck — workaround for @vercel/node bundler stripping express method types
 import { Router, type Request, type Response } from "express";
 import { eq } from "drizzle-orm";
-import { db, schema } from "../db";
+import { db, schema } from "../db.js";
 import {
   registerEmailSchema,
   loginEmailSchema,
   requestOtpSchema,
   verifyOtpSchema,
-} from "../../shared/schema";
-import { hashPassword, verifyPassword } from "../auth/password";
-import { signSession, setSessionCookie, clearSessionCookie, readSession } from "../auth/jwt";
-import { issueOtp, consumeOtp, deliverOtpDev } from "../auth/otp";
-import { buildAuthUrl, exchangeCode, newState, getConfig } from "../auth/google";
-import { sendWelcome } from "../auth/welcome";
+} from "../../shared/schema.js";
+import { hashPassword, verifyPassword } from "../auth/password.js";
+import { signSession, setSessionCookie, clearSessionCookie, readSession } from "../auth/jwt.js";
+import { issueOtp, consumeOtp, deliverOtpDev } from "../auth/otp.js";
+import { buildAuthUrl, exchangeCode, newState, getConfig } from "../auth/google.js";
+import { sendWelcome } from "../auth/welcome.js";
 
 export const authRouter = Router();
 

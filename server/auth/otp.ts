@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 import { eq, and, gt } from "drizzle-orm";
-import { db, schema } from "../db";
+import { db, schema } from "../db.js";
 
 const OTP_TTL_MS = 5 * 60 * 1000;
 

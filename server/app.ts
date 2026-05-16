@@ -3,7 +3,7 @@ import "dotenv/config";
 import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import { authRouter } from "./routes/auth";
+import { authRouter } from "./routes/auth.js";
 
 export function createApp() {
   const app = express();
