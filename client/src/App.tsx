@@ -5,6 +5,7 @@ import { Route, Switch, useLocation } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import Layout from "./components/Layout";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { FontProvider } from "./contexts/FontContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import { AuthProvider } from "./contexts/AuthContext";
 import Home from "./pages/Home";
@@ -15,6 +16,7 @@ import AI from "./pages/AI";
 import Apps from "./pages/Apps";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Settings from "./pages/Settings";
 
 // Pages that use their own full-screen layout (no sidebar)
 const STANDALONE_PATHS = ["/login", "/signup"];
@@ -33,6 +35,7 @@ function Router() {
       <Route path={"/applications"} component={Apps} />
       <Route path={"/login"} component={Login} />
       <Route path={"/signup"} component={Signup} />
+      <Route path={"/parametres"} component={Settings} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
@@ -45,14 +48,16 @@ function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="dark">
-        <LanguageProvider>
-          <AuthProvider>
-            <TooltipProvider>
-              <Toaster />
-              <Router />
-            </TooltipProvider>
-          </AuthProvider>
-        </LanguageProvider>
+        <FontProvider>
+          <LanguageProvider>
+            <AuthProvider>
+              <TooltipProvider>
+                <Toaster />
+                <Router />
+              </TooltipProvider>
+            </AuthProvider>
+          </LanguageProvider>
+        </FontProvider>
       </ThemeProvider>
     </ErrorBoundary>
   );
