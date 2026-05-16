@@ -1,0 +1,35 @@
+{
+  "build_command": "pnpm run build",
+  "capabilities": [],
+  "dev_command": "pnpm run dev",
+  "env_vars": {},
+  "experiments": null,
+  "git_remote": {
+    "repo_url": "s3://vida-prod-gitrepo/webdev-git/310419663028817801/XPqrZbAhRUKbe838GaNGdm",
+    "access_key_id": "ASIAZV3A2ECZB4KFCX36",
+    "secret_access_key": "NPmvY22qsLO2uI0lnhxFxU0kC8lCEsPbROymrPoY",
+    "session_token": "IQoJb3JpZ2luX2VjEKv//////////wEaCXVzLWVhc3QtMSJGMEQCICy43KwSxLydylG6G3CWuMA0fXNNwM4xkEjG/XrEYlGgAiA3x8Wp6K0HUKGLKP9JKMaS8nwAxs4m+3TU3OlazvCI7yr2Awh0EAQaDDY2NTM4NjA5ODg2NiIMXAYu3Zbiqs33GqWzKtMDBBF7QsUmi5vtavvnZjceTZKtDW2LXg93jqYS8o4BNJ0FHewBsU1qFT337S832NeC9x59s7E94A14NW4dC82eKJwCofHbCJp5+FVDaYn0Xz0hcqGgXHnzbw6vlxQuCTDiImRNLTBo15QQ7YT3bMQOabPE6wUzrrAOCvXs9L+kXxGlReVk1XeE/7EeGmMV5v6yw7kDav3XYxjMd7fV9kfSXR8HXdo8NRqqvqaT0LqFVWB/Z8J9yPUqTFFiwG0rz1f+30kV317CU3iaLH5yzI/7uKTzY8f7eRnl+aHtfwdkHbIQs62pn/Royzy1FdJIGPMyEiDgW5hir1aSiuaRMoNoqKdAsEwNfUDKpIaoG+wEEV1E47B2RwkZbvTHSO2myWAu7neKYuMqJ02xna9D5Kd4LOaC4/55+o9TG5eZxGhS7ewJ31aO0oXQ8fGuax2ywZaOrCUgzQuowAvFz8EL14S15O/weTQajWKaPIxI0rTeO+WoEJdZlXENXnArcS5RgJJWRKjVoZ06/W6qLr65H72vGYcJZrzNHKB5l5l0iK3zv6+ncCGrs+2W2JNeEcI6cNQCrjcGmeG2iseJDgfqqUMuH61Qgpc66+Zcdp6hwnjvveyIcCIwqvKb0AY6ngGyqYDLJHiwMQIipFU7gjCmdwP3APDDRTZV0ewLsX1XqUab1PG/O2VvxkPB63As3rYETmNEfzanyEF3RRxI8EwyfVTJH+rUVXzZxlES2/fQkFru50MSpOsvjoz3XpvnlcOXW5kUF36+9qzR+JyryAJvF5F4DMf0z+vehX1ECAZT3v6XhrnYIYw/0+Y1lWu1uxYz8G40YyHhjiIOMScwaA==",
+    "expiration": "2026-05-15T22:44:58.000Z"
+  },
+  "name": "softwareHub",
+  "path": "/home/ubuntu/softwareHub",
+  "port": 3000,
+  "secrets": {
+    "BUILT_IN_FORGE_API_KEY": "JJHraFi8WvCfJcpcLksSAJ",
+    "BUILT_IN_FORGE_API_URL": "https://forge.manus.ai",
+    "JWT_SECRET": "CiEauSYRZHDbt4D7yWMRgr",
+    "OAUTH_SERVER_URL": "https://api.manus.im",
+    "OWNER_NAME": "ing innocent Lekajio",
+    "OWNER_OPEN_ID": "KKHjNc3VJLtjHqKzmxUhHV",
+    "VITE_ANALYTICS_ENDPOINT": "https://manus-analytics.com",
+    "VITE_ANALYTICS_WEBSITE_ID": "d8563601-ebf2-4138-97e0-d9df35585085",
+    "VITE_APP_ID": "XPqrZbAhRUKbe838GaNGdm",
+    "VITE_APP_LOGO": "",
+    "VITE_APP_TITLE": "SoftwareHub - Logiciels, VPN \u0026 Outils Numériques",
+    "VITE_FRONTEND_FORGE_API_KEY": "m3mWY4mKvr4WA6x4xTQHQj",
+    "VITE_FRONTEND_FORGE_API_URL": "https://forge.manus.ai",
+    "VITE_OAUTH_PORTAL_URL": "https://manus.im"
+  },
+  "template_id": "web-static",
+  "test_command": "pnpm test"
+}

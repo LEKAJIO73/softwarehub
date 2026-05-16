@@ -1,0 +1,22 @@
+# Robots.txt for Lekajio Software
+# https://lekajio.com
+
+User-agent: *
+Allow: /
+Allow: /vpn
+Allow: /logiciels
+Allow: /outils
+Allow: /ia
+
+# Sitemaps
+Sitemap: https://lekajio.com/sitemap.xml
+
+# Crawl-delay
+User-agent: Googlebot
+Crawl-delay: 1
+
+User-agent: Bingbot
+Crawl-delay: 2
+
+User-agent: Yandex
+Crawl-delay: 2

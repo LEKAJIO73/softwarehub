@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Page d'accueil -->
+  <url>
+    <loc>https://lekajio.com/</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lekajio.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://lekajio.com/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://lekajio.com/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://lekajio.com/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://lekajio.com/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://lekajio.com/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lekajio.com/" />
+  </url>
+
+  <!-- Page VPN -->
+  <url>
+    <loc>https://lekajio.com/vpn</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Page Logiciels -->
+  <url>
+    <loc>https://lekajio.com/logiciels</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Page Outils -->
+  <url>
+    <loc>https://lekajio.com/outils</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Page IA & Comptes Premium -->
+  <url>
+    <loc>https://lekajio.com/ia</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+</urlset>
