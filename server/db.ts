@@ -1,21 +1,19 @@
 import "dotenv/config";
-import Database from "better-sqlite3";
-import { drizzle } from "drizzle-orm/better-sqlite3";
-import path from "path";
-import fs from "fs";
-import { fileURLToPath } from "url";
+import { drizzle } from "drizzle-orm/postgres-js";
+import postgres from "postgres";
 import * as schema from "../shared/schema";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const url = process.env.DATABASE_URL;
+if (!url) {
+  throw new Error("DATABASE_URL is required. Set it in .env or your hosting platform.");
+}
 
-const DB_PATH = process.env.SQLITE_PATH || path.resolve(__dirname, "..", "data", "softwareHub.db");
+const isProd = process.env.NODE_ENV === "production";
+const client = postgres(url, {
+  max: 10,
+  prepare: false,
+  ssl: isProd || url.includes("sslmode=require") ? "require" : false,
+});
 
-fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
-
-const sqlite = new Database(DB_PATH);
-sqlite.pragma("journal_mode = WAL");
-sqlite.pragma("foreign_keys = ON");
-
-export const db = drizzle(sqlite, { schema });
+export const db = drizzle(client, { schema });
 export { schema };

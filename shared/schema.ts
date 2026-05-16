@@ -1,25 +1,20 @@
-import { sqliteTable, integer, text, index, uniqueIndex } from "drizzle-orm/sqlite-core";
-import { sql } from "drizzle-orm";
+import { pgTable, serial, text, timestamp, boolean, integer, index, uniqueIndex } from "drizzle-orm/pg-core";
 import { z } from "zod";
 
-export const users = sqliteTable(
+export const users = pgTable(
   "users",
   {
-    id: integer("id").primaryKey({ autoIncrement: true }),
+    id: serial("id").primaryKey(),
     email: text("email"),
     phone: text("phone"),
     name: text("name"),
     avatarUrl: text("avatar_url"),
     passwordHash: text("password_hash"),
     googleId: text("google_id"),
-    emailVerified: integer("email_verified", { mode: "boolean" }).default(false).notNull(),
-    phoneVerified: integer("phone_verified", { mode: "boolean" }).default(false).notNull(),
-    createdAt: integer("created_at", { mode: "timestamp" })
-      .default(sql`(unixepoch())`)
-      .notNull(),
-    updatedAt: integer("updated_at", { mode: "timestamp" })
-      .default(sql`(unixepoch())`)
-      .notNull(),
+    emailVerified: boolean("email_verified").default(false).notNull(),
+    phoneVerified: boolean("phone_verified").default(false).notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
   },
   (t) => ({
     emailIdx: uniqueIndex("users_email_idx").on(t.email),
@@ -28,18 +23,16 @@ export const users = sqliteTable(
   }),
 );
 
-export const otpCodes = sqliteTable(
+export const otpCodes = pgTable(
   "otp_codes",
   {
-    id: integer("id").primaryKey({ autoIncrement: true }),
+    id: serial("id").primaryKey(),
     phone: text("phone").notNull(),
     codeHash: text("code_hash").notNull(),
-    expiresAt: integer("expires_at", { mode: "timestamp" }).notNull(),
-    consumed: integer("consumed", { mode: "boolean" }).default(false).notNull(),
+    expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+    consumed: boolean("consumed").default(false).notNull(),
     attempts: integer("attempts").default(0).notNull(),
-    createdAt: integer("created_at", { mode: "timestamp" })
-      .default(sql`(unixepoch())`)
-      .notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
   },
   (t) => ({
     phoneIdx: index("otp_phone_idx").on(t.phone),
