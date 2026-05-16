@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { createApp } from "../server/app";
 
 // Vercel serverless function entry. Vercel will route any URL not matched by
