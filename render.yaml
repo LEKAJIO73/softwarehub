@@ -4,24 +4,18 @@ services:
     runtime: node
     plan: free
     region: frankfurt
-    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm db:push --force && pnpm build
-    startCommand: pnpm start
+    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm drizzle-kit push --force && pnpm build
+    startCommand: node dist/index.js
     healthCheckPath: /api/health
     autoDeploy: true
-    disk:
-      name: data
-      mountPath: /var/data
-      sizeGB: 1
     envVars:
       - key: NODE_ENV
         value: production
-      - key: SQLITE_PATH
-        value: /var/data/softwareHub.db
-      - key: PORT
-        value: 10000
       - key: JWT_SECRET
         generateValue: true
       # ─── Fill these from the Render dashboard (Environment tab) ───
+      - key: DATABASE_URL
+        sync: false
       - key: GOOGLE_CLIENT_ID
         sync: false
       - key: GOOGLE_CLIENT_SECRET
