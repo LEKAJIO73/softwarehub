@@ -1,6 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Shield, Lock, Globe, Zap, Server, Eye, Cat, Box, Layers, Network, Wifi, KeyRound, Smartphone, ArrowRight, X, BookOpen, ExternalLink, MessageCircle, ChevronRight, Download } from "lucide-react";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import SoftwareCard from "@/components/SoftwareCard";
@@ -151,7 +150,7 @@ export default function VPN() {
         keywords="VPN, proxy, V2Box, V2Ray, ExpressVPN, Clash Mi, sing-box, Hiddify, AmneziaVPN, Geph, Streisand, Outline, Shadowsocks, Trojan, VMess, téléchargement VPN"
         path="/vpn"
       />
-      <Navbar />
+
 
       {/* Hero */}
       <section className="relative pt-32 pb-20 overflow-hidden">

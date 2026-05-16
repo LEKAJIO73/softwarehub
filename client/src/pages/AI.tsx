@@ -7,7 +7,6 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
 import { Bot, Crown, ExternalLink, Globe, Key, Mail, MessageSquare, Phone, Shield, Sparkles, Star, Zap } from "lucide-react";
 import { useState } from "react";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 
@@ -360,7 +359,7 @@ export default function AI() {
         keywords="ChatGPT Plus, Claude Pro, Gemini Pro, Grok, Sora, comptes IA, achat compte IA, Apple ID, Gmail, intelligence artificielle, lekajio.com"
         path="/ia"
       />
-      <Navbar />
+
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-16 overflow-hidden">

@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Shield, Download, Wrench, Play, Zap, Lock, Globe } from "lucide-react";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import SoftwareCard from "@/components/SoftwareCard";
@@ -48,7 +47,7 @@ export default function Home() {
         keywords="Lekajio Software, logiciels, VPN, téléchargement, ChatGPT, Claude Pro, Gemini, MATLAB, Adobe, outils numériques, comptes IA, lekajio.com"
         path="/"
       />
-      <Navbar />
+
 
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">

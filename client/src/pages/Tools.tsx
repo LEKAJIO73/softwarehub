@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Wrench, Cpu, HardDrive, Wifi, Battery, Key, Palette, Monitor } from "lucide-react";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import SoftwareCard from "@/components/SoftwareCard";
@@ -37,7 +36,7 @@ export default function Tools() {
         keywords="outils numériques, CPU-Z, HWMonitor, Rufus, 7-Zip, Bitwarden, diagnostic PC, outils gratuits, téléchargement outils"
         path="/outils"
       />
-      <Navbar />
+
 
       {/* Hero */}
       <section className="relative pt-32 pb-16 overflow-hidden">

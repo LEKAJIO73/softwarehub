@@ -4,7 +4,6 @@
  * Color: Dark slate + cyan/blue accents
  */
 import { useState } from "react";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -235,7 +234,7 @@ export default function Apps() {
         description="Download the best iPhone apps - AI, Social, Entertainment, Productivity, Fitness and more. Direct App Store links."
         keywords="apps, iPhone, download, App Store, AI apps, social apps, productivity"
       />
-      <Navbar />
+
 
       {/* Hero Section */}
       <section className="relative pt-28 pb-16 overflow-hidden">

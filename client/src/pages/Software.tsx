@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Download, Search, Grid, Monitor, Video, Shield as ShieldIcon, Wrench, FileText, Music, MessageCircle, BookOpen, ChevronRight, Phone, Cpu, BarChart3, Eye, Code2, Database, GraduationCap, Beaker, Settings2, DollarSign, CheckCircle, AlertTriangle } from "lucide-react";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import SoftwareCard from "@/components/SoftwareCard";
@@ -111,7 +110,7 @@ export default function Software() {
         keywords="logiciels, MATLAB, Adobe Premiere Pro, Photoshop, Windows 11, Office 2024, IDM, téléchargement logiciels, tutoriel installation"
         path="/logiciels"
       />
-      <Navbar />
+
 
       {/* Hero */}
       <section className="relative pt-32 pb-16 overflow-hidden">
