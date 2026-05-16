@@ -1,49 +1,29 @@
-import "dotenv/config";
-import express from "express";
-import cookieParser from "cookie-parser";
-import cors from "cors";
-import { createServer } from "http";
-import path from "path";
-import { fileURLToPath } from "url";
-import { authRouter } from "./routes/auth";
+import { createApp } from "./app";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const app = createApp();
 
-async function startServer() {
-  const app = express();
-  const server = createServer(app);
+const isProd = process.env.NODE_ENV === "production";
 
-  app.use(express.json({ limit: "1mb" }));
-  app.use(cookieParser());
-  app.use(
-    cors({
-      origin: process.env.APP_ORIGIN || "http://localhost:3000",
-      credentials: true,
-    }),
-  );
-
-  app.use("/api/auth", authRouter);
-  app.get("/api/health", (_req, res) => res.json({ ok: true }));
-
-  const isProd = process.env.NODE_ENV === "production";
-
-  if (isProd) {
+if (isProd) {
+  // In prod (e.g. self-hosted Node), serve the Vite build alongside the API.
+  // On Vercel the static files are served by the CDN and api/index.ts is used,
+  // so this block is skipped (NODE_ENV=production but VERCEL=1 → see api/index.ts).
+  if (!process.env.VERCEL) {
+    const path = await import("path");
+    const { fileURLToPath } = await import("url");
+    const __dirname = path.dirname(fileURLToPath(import.meta.url));
     const staticPath = path.resolve(__dirname, "public");
-    app.use(express.static(staticPath));
+    app.use((await import("express")).default.static(staticPath));
     app.get("*", (_req, res) => {
       res.sendFile(path.join(staticPath, "index.html"));
     });
   }
+}
 
-  const port = Number(process.env.API_PORT || process.env.PORT || (isProd ? 3000 : 3001));
+const port = Number(process.env.API_PORT || process.env.PORT || (isProd ? 3000 : 3001));
 
-  server.listen(port, () => {
+if (!process.env.VERCEL) {
+  app.listen(port, () => {
     console.log(`[api] running on http://localhost:${port}/`);
   });
 }
-
-startServer().catch((e) => {
-  console.error(e);
-  process.exit(1);
-});
