@@ -9,8 +9,8 @@ interface FontInfo {
 }
 
 export const fonts: FontInfo[] = [
-  { id: "sans", label: "DM Sans (par défaut)", cssFamily: "'DM Sans', system-ui, sans-serif" },
-  { id: "serif", label: "Anthropic Serif", cssFamily: "'Source Serif 4', 'Iowan Old Style', Charter, Georgia, serif" },
+  { id: "serif", label: "Anthropic Serif (par défaut)", cssFamily: "'Source Serif 4', 'Iowan Old Style', Charter, Georgia, serif" },
+  { id: "sans", label: "Inter (sans-serif)", cssFamily: "'Inter', system-ui, -apple-system, sans-serif" },
   { id: "mono", label: "Monospace", cssFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" },
 ];
 
@@ -25,9 +25,9 @@ const STORAGE_KEY = "font";
 
 export function FontProvider({ children }: { children: ReactNode }) {
   const [font, setFontState] = useState<FontChoice>(() => {
-    if (typeof window === "undefined") return "sans";
+    if (typeof window === "undefined") return "serif";
     const stored = localStorage.getItem(STORAGE_KEY) as FontChoice | null;
-    return stored ?? "sans";
+    return stored ?? "serif";
   });
 
   useEffect(() => {
