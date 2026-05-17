@@ -20,8 +20,8 @@ export default function Login() {
     <div className="min-h-screen flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
         <Link href="/" className="flex items-center gap-3 justify-center mb-8 group">
-          <div className="w-10 h-10 rounded-xl bg-[#25D366] flex items-center justify-center shadow-lg shadow-[#25D366]/30">
-            <WhatsappIcon className="w-6 h-6 text-white" />
+          <div className="w-10 h-10 rounded-xl bg-[#25D366]/10 flex items-center justify-center">
+            <WhatsappIcon className="w-6 h-6 text-[#25D366]" />
           </div>
           <span className="font-heading text-xl font-bold">
             Lekajio <span className="text-gradient">Software</span>
