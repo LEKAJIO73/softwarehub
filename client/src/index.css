@@ -193,22 +193,22 @@
 
   .glow-card {
     position: relative;
-    background: oklch(0.16 0.025 250);
-    border: 1px solid oklch(0.25 0.03 250);
+    background: var(--card);
+    border: 1px solid var(--border);
     border-radius: 0.75rem;
     transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
   .glow-card:hover {
-    border-color: oklch(0.65 0.2 250 / 0.5);
-    box-shadow: 0 0 30px oklch(0.65 0.2 250 / 0.1), 0 8px 32px oklch(0 0 0 / 0.3);
+    border-color: var(--primary);
+    box-shadow: 0 0 30px var(--primary), 0 8px 32px oklch(0 0 0 / 0.1);
     transform: translateY(-2px);
   }
 
   .glass-surface {
-    background: oklch(0.16 0.025 250 / 0.7);
+    background: var(--card);
     backdrop-filter: blur(12px);
-    border: 1px solid oklch(1 0 0 / 0.08);
+    border: 1px solid var(--border);
   }
 
   .text-gradient {
@@ -237,14 +237,49 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: oklch(0.12 0.02 250);
+  background: var(--muted);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: oklch(0.3 0.03 250);
+  background: var(--border);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.4 0.03 250);
+  background: var(--muted-foreground);
+}
+
+/* ─── Aggressive light-mode overrides for hardcoded dark colors ─── */
+:root.light [class*="bg-[oklch(0.1_"],
+:root.light [class*="bg-[oklch(0.12_"],
+:root.light [class*="bg-[oklch(0.13_"],
+:root.light [class*="bg-[oklch(0.14_"],
+:root.light [class*="bg-[oklch(0.15_"],
+:root.light [class*="bg-[oklch(0.16_"],
+:root.light [class*="bg-[oklch(0.18_"],
+:root.light [class*="bg-[oklch(0.2_"] {
+  background-color: var(--background) !important;
+  background-image: none !important;
+}
+
+:root.light [class*="text-[oklch(0.9"],
+:root.light [class*="text-[oklch(0.93"],
+:root.light [class*="text-[oklch(0.98"] {
+  color: var(--foreground) !important;
+}
+
+:root.light .text-gradient {
+  background: linear-gradient(135deg, oklch(0.5 0.15 195), oklch(0.45 0.2 250));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Hide hero background images in light mode for clean white look */
+:root.light section img[src*="hero-banner"],
+:root.light section img[src*="vpn-section"],
+:root.light section img[src*="software-section"],
+:root.light section img[src*="tools-section"],
+:root.light section img[src*="download-section"] {
+  opacity: 0.06;
 }
