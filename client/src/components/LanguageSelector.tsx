@@ -33,11 +33,11 @@ export default function LanguageSelector() {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: -8, scale: 0.95 }}
+            initial={{ opacity: 0, y: 8, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -8, scale: 0.95 }}
+            exit={{ opacity: 0, y: 8, scale: 0.95 }}
             transition={{ duration: 0.15, ease: [0.23, 1, 0.32, 1] }}
-            className="absolute right-0 top-full mt-2 w-52 rounded-xl overflow-hidden border border-border bg-[oklch(0.15_0.02_250)] shadow-xl shadow-black/30 z-[100]"
+            className="absolute right-0 bottom-full mb-2 w-52 max-h-[60vh] overflow-y-auto rounded-xl border border-border bg-popover text-popover-foreground shadow-xl z-[100]"
           >
             <div className="p-1.5">
               {languages.map((lang) => (
