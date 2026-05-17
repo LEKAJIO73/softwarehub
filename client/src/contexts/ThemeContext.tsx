@@ -27,6 +27,13 @@ interface ThemeProviderProps {
 export function ThemeProvider({ children, defaultTheme = "system" }: ThemeProviderProps) {
   const [theme, setThemeState] = useState<Theme>(() => {
     if (typeof window === "undefined") return defaultTheme;
+    // One-time migration: reset everyone to light theme (white background)
+    const migrationKey = "theme_migration_to_light_v1";
+    if (!localStorage.getItem(migrationKey)) {
+      localStorage.setItem(STORAGE_KEY, "light");
+      localStorage.setItem(migrationKey, "done");
+      return "light";
+    }
     const stored = localStorage.getItem(STORAGE_KEY) as Theme | null;
     return stored ?? defaultTheme;
   });
