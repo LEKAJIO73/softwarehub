@@ -9,7 +9,7 @@ interface FontInfo {
 }
 
 export const fonts: FontInfo[] = [
-  { id: "serif", label: "Anthropic Serif (par défaut)", cssFamily: "'Source Serif 4', 'Iowan Old Style', Charter, Georgia, serif" },
+  { id: "serif", label: "Times New Roman (par défaut)", cssFamily: "'Times New Roman', Times, 'Liberation Serif', Georgia, serif" },
   { id: "sans", label: "Inter (sans-serif)", cssFamily: "'Inter', system-ui, -apple-system, sans-serif" },
   { id: "mono", label: "Monospace", cssFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" },
 ];

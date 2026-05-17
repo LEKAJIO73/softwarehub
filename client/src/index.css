@@ -46,8 +46,8 @@
 }
 
 :root {
-  --font-body: 'Source Serif 4', 'Iowan Old Style', Charter, Georgia, 'Times New Roman', serif;
-  --font-heading-stack: 'Source Serif 4', 'Iowan Old Style', Charter, Georgia, serif;
+  --font-body: 'Times New Roman', 'Times', 'Liberation Serif', Georgia, serif;
+  --font-heading-stack: 'Times New Roman', 'Times', 'Liberation Serif', Georgia, serif;
   --font-ui: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
@@ -130,9 +130,9 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-body);
-    font-feature-settings: "ss01", "ss02", "kern", "liga";
-    font-size: 17px;
-    line-height: 1.65;
+    font-feature-settings: "kern", "liga";
+    font-size: 20px;
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
