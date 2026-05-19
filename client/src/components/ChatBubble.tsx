@@ -126,26 +126,6 @@ export default function ChatBubble() {
 
   return (
     <>
-      {/* Floating button */}
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        aria-label={open ? "Fermer le chat" : "Ouvrir le chat IA"}
-        className="fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-[oklch(0.65_0.2_250)] to-[oklch(0.55_0.22_280)] text-white shadow-xl shadow-[oklch(0.55_0.22_280/0.4)] hover:scale-105 active:scale-95 transition-transform flex items-center justify-center"
-      >
-        <AnimatePresence mode="wait" initial={false}>
-          {open ? (
-            <motion.span key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}>
-              <X className="w-6 h-6" />
-            </motion.span>
-          ) : (
-            <motion.span key="s" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}>
-              <Sparkles className="w-6 h-6" />
-            </motion.span>
-          )}
-        </AnimatePresence>
-      </button>
-
       {/* Chat panel */}
       <AnimatePresence>
         {open && (
