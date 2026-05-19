@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Shield, Mail, Phone, MessageCircle, Send } from "lucide-react";
+import { Brain, Mail, Phone, MessageCircle, Send } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 // Icônes SVG personnalisées pour les réseaux sociaux
@@ -79,9 +79,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[oklch(0.7_0.15_195)] to-[oklch(0.65_0.2_250)] flex items-center justify-center">
-                <Shield className="w-5 h-5 text-white" />
-              </div>
+              <Brain className="w-9 h-9 text-[oklch(0.55_0.2_250)] shrink-0" strokeWidth={2.2} />
               <span className="font-heading text-xl font-bold">
                 Lekajio <span className="text-gradient">Software</span>
               </span>
