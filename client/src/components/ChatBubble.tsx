@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Send, X, Sparkles, Loader2 } from "lucide-react";
+import { Send, X, Sparkles, Loader2, PlusCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Msg {
@@ -148,10 +148,24 @@ export default function ChatBubble() {
             {/* Header */}
             <div className="px-4 py-3 border-b border-border flex items-center gap-3 bg-gradient-to-r from-[oklch(0.65_0.2_250)] to-[oklch(0.55_0.22_280)] text-white">
               <Sparkles className="w-5 h-5" />
-              <div className="flex-1">
+              <div className="flex-1 min-w-0">
                 <div className="text-sm font-semibold leading-none">Assistant Lekajio</div>
-                <div className="text-[11px] opacity-80 mt-0.5">Propulsé par Claude</div>
+                <div className="text-[11px] opacity-80 mt-0.5">Propulsé par Gemini</div>
               </div>
+              <button
+                type="button"
+                onClick={() => {
+                  if (streaming) return;
+                  setMessages([INTRO]);
+                  setInput("");
+                }}
+                disabled={streaming}
+                aria-label="Nouvelle conversation"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium bg-white/15 hover:bg-white/25 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                <PlusCircle className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">New chat</span>
+              </button>
             </div>
 
             {/* Messages */}
