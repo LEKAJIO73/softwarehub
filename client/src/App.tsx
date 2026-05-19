@@ -18,6 +18,9 @@ import Apps from "./pages/Apps";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Settings from "./pages/Settings";
+import Orders from "./pages/Orders";
+import OrderDetail from "./pages/OrderDetail";
+import Catalogue from "./pages/Catalogue";
 
 // Pages that use their own full-screen layout (no sidebar)
 const STANDALONE_PATHS = ["/login", "/signup"];
@@ -37,6 +40,9 @@ function Router() {
       <Route path={"/login"} component={Login} />
       <Route path={"/signup"} component={Signup} />
       <Route path={"/parametres"} component={Settings} />
+      <Route path={"/orders"} component={Orders} />
+      <Route path={"/orders/:id"} component={OrderDetail} />
+      <Route path={"/catalogue"} component={Catalogue} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>

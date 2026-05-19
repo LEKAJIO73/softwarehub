@@ -39,8 +39,33 @@ export const otpCodes = pgTable(
   }),
 );
 
+export const orders = pgTable(
+  "orders",
+  {
+    id: serial("id").primaryKey(),
+    userId: integer("user_id").references(() => users.id),
+    productId: text("product_id").notNull(),
+    productName: text("product_name").notNull(),
+    amountXaf: integer("amount_xaf").notNull(),
+    currency: text("currency").default("XAF").notNull(),
+    phone: text("phone"),
+    status: text("status").default("pending").notNull(), // pending | paid | failed | cancelled
+    provider: text("provider").default("notchpay").notNull(),
+    providerRef: text("provider_ref"),
+    checkoutUrl: text("checkout_url"),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+    paidAt: timestamp("paid_at", { withTimezone: true }),
+  },
+  (t) => ({
+    userIdx: index("orders_user_idx").on(t.userId),
+    refIdx: index("orders_ref_idx").on(t.providerRef),
+  }),
+);
+
 export type User = typeof users.$inferSelect;
 export type NewUser = typeof users.$inferInsert;
+export type Order = typeof orders.$inferSelect;
+export type NewOrder = typeof orders.$inferInsert;
 
 // ─── Zod schemas (shared validation) ────────────────────────────
 

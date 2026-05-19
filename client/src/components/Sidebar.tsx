@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, Shield, Download, Wrench, Home, Bot, Smartphone, Settings as SettingsIcon, PlusCircle } from "lucide-react";
+import { Menu, X, Shield, Download, Wrench, Home, Bot, Smartphone, Settings as SettingsIcon, PlusCircle, ShoppingBag } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageSelector from "./LanguageSelector";
@@ -19,6 +19,8 @@ export default function Sidebar() {
     { href: "/outils", label: t("nav.tools"), icon: Wrench },
     { href: "/ia", label: t("nav.ai"), icon: Bot },
     { href: "/applications", label: "Apps", icon: Smartphone },
+    { href: "/catalogue", label: "Catalogue", icon: ShoppingBag },
+    { href: "/orders", label: "Mes commandes", icon: ShoppingBag },
     { href: "/parametres", label: "Paramètres", icon: SettingsIcon },
   ];
 
