@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { Router, type Request, type Response } from "express";
-import Anthropic from "@anthropic-ai/sdk";
+import { GoogleGenAI } from "@google/genai";
 
 export const chatRouter = Router();
 
@@ -27,9 +27,9 @@ Style :
 - Évite les emojis sauf si l'utilisateur en utilise.`;
 
 chatRouter.post("/stream", async (req: Request, res: Response) => {
-  const apiKey = process.env.ANTHROPIC_API_KEY;
+  const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
   if (!apiKey) {
-    return res.status(503).json({ error: "Chat IA non configuré (ANTHROPIC_API_KEY manquante)." });
+    return res.status(503).json({ error: "Chat IA non configuré (GEMINI_API_KEY manquante)." });
   }
 
   const { messages } = req.body as { messages?: { role: "user" | "assistant"; content: string }[] };
@@ -37,15 +37,20 @@ chatRouter.post("/stream", async (req: Request, res: Response) => {
     return res.status(400).json({ error: "messages requis" });
   }
 
-  // Sanitize: keep only valid roles and trim content length
-  const cleanMessages = messages
+  const clean = messages
     .filter((m) => m && (m.role === "user" || m.role === "assistant") && typeof m.content === "string")
     .map((m) => ({ role: m.role, content: m.content.slice(0, 8000) }))
     .slice(-30);
 
-  if (cleanMessages.length === 0 || cleanMessages[cleanMessages.length - 1].role !== "user") {
+  if (clean.length === 0 || clean[clean.length - 1].role !== "user") {
     return res.status(400).json({ error: "le dernier message doit être de l'utilisateur" });
   }
+
+  // Gemini uses "user" and "model" roles, with the entire history as "contents"
+  const contents = clean.map((m) => ({
+    role: m.role === "assistant" ? "model" : "user",
+    parts: [{ text: m.content }],
+  }));
 
   res.writeHead(200, {
     "Content-Type": "text/event-stream",
@@ -58,19 +63,21 @@ chatRouter.post("/stream", async (req: Request, res: Response) => {
     res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`);
   };
 
-  const client = new Anthropic({ apiKey });
   try {
-    const stream = await client.messages.stream({
-      model: "claude-haiku-4-5",
-      max_tokens: 1024,
-      system: SYSTEM_PROMPT,
-      messages: cleanMessages,
+    const ai = new GoogleGenAI({ apiKey });
+    const stream = await ai.models.generateContentStream({
+      model: "gemini-2.0-flash",
+      contents,
+      config: {
+        systemInstruction: SYSTEM_PROMPT,
+        maxOutputTokens: 1024,
+        temperature: 0.7,
+      },
     });
 
-    for await (const event of stream) {
-      if (event.type === "content_block_delta" && event.delta?.type === "text_delta") {
-        send("delta", event.delta.text);
-      }
+    for await (const chunk of stream) {
+      const text = chunk.text;
+      if (text) send("delta", text);
     }
     send("done", {});
   } catch (e: any) {
