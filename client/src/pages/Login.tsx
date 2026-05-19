@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import AuthForm from "@/components/AuthForm";
-import WhatsappIcon from "@/components/WhatsappIcon";
+import { Brain } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 
 export default function Login() {
@@ -20,9 +20,7 @@ export default function Login() {
     <div className="min-h-screen flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
         <Link href="/" className="flex items-center gap-3 justify-center mb-8 group">
-          <div className="w-10 h-10 rounded-xl bg-[#25D366]/10 flex items-center justify-center">
-            <WhatsappIcon className="w-6 h-6 text-[#25D366]" />
-          </div>
+          <Brain className="w-9 h-9 text-[oklch(0.55_0.2_250)] shrink-0" strokeWidth={2.2} />
           <span className="font-heading text-xl font-bold">
             Lekajio <span className="text-gradient">Software</span>
           </span>
