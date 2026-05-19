@@ -66,7 +66,7 @@ chatRouter.post("/stream", async (req: Request, res: Response) => {
   try {
     const ai = new GoogleGenAI({ apiKey });
     const stream = await ai.models.generateContentStream({
-      model: "gemini-1.5-flash",
+      model: "gemini-2.5-flash",
       contents,
       config: {
         systemInstruction: SYSTEM_PROMPT,
