@@ -4,6 +4,7 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch, useLocation } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import Layout from "./components/Layout";
+import AuthGuard from "./components/AuthGuard";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { FontProvider } from "./contexts/FontContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
@@ -41,7 +42,11 @@ function Router() {
     </Switch>
   );
 
-  return isStandalone ? routes : <Layout>{routes}</Layout>;
+  return (
+    <AuthGuard>
+      {isStandalone ? routes : <Layout>{routes}</Layout>}
+    </AuthGuard>
+  );
 }
 
 function App() {
