@@ -29,6 +29,17 @@ export default function ChatBubble() {
     if (open) inputRef.current?.focus();
   }, [open]);
 
+  // Allow other parts of the app (e.g. sidebar "New chat" link) to open + reset
+  useEffect(() => {
+    const handler = () => {
+      setMessages([INTRO]);
+      setInput("");
+      setOpen(true);
+    };
+    window.addEventListener("open-new-chat", handler);
+    return () => window.removeEventListener("open-new-chat", handler);
+  }, []);
+
   const send = async () => {
     const text = input.trim();
     if (!text || streaming) return;

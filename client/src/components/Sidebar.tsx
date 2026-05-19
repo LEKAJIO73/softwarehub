@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, Shield, Download, Wrench, Home, Bot, Smartphone, Settings as SettingsIcon } from "lucide-react";
+import { Menu, X, Shield, Download, Wrench, Home, Bot, Smartphone, Settings as SettingsIcon, PlusCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageSelector from "./LanguageSelector";
@@ -38,6 +38,18 @@ export default function Sidebar() {
       </Link>
 
       <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+        <button
+          type="button"
+          onClick={() => {
+            window.dispatchEvent(new CustomEvent("open-new-chat"));
+            onNavigate?.();
+          }}
+          className="w-full relative flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-white/5 transition-all duration-200"
+        >
+          <PlusCircle className="w-4 h-4 shrink-0" />
+          <span className="truncate text-left flex-1">New chat</span>
+        </button>
+
         {navLinks.map((link) => {
           const Icon = link.icon;
           const isActive = location === link.href;
