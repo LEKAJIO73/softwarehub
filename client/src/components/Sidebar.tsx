@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, Shield, Download, Wrench, Home, Bot, Smartphone, Settings as SettingsIcon, PlusCircle, ShoppingBag } from "lucide-react";
+import { Menu, X, Shield, Download, Wrench, Home, Bot, Smartphone, Settings as SettingsIcon, PlusCircle, ShoppingBag, Brain } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageSelector from "./LanguageSelector";
@@ -37,6 +37,7 @@ export default function Sidebar() {
         <span className="font-heading text-lg font-bold text-foreground leading-tight">
           Lekajio <span className="text-gradient">Software</span>
         </span>
+        <Brain className="w-6 h-6 text-[oklch(0.55_0.2_250)] ml-auto" strokeWidth={2.2} />
       </Link>
 
       <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
@@ -106,6 +107,7 @@ export default function Sidebar() {
             <span className="font-heading text-base font-bold">
               Lekajio <span className="text-gradient">Software</span>
             </span>
+            <Brain className="w-5 h-5 text-[oklch(0.55_0.2_250)]" strokeWidth={2.2} />
           </Link>
           <div className="flex items-center gap-2">
             <UserMenu compact />
