@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageSelector from "./LanguageSelector";
 import UserMenu from "./UserMenu";
-import WhatsappIcon from "./WhatsappIcon";
 
 export default function Sidebar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -31,13 +30,10 @@ export default function Sidebar() {
         onClick={onNavigate}
         className="flex items-center gap-3 px-4 py-5 border-b border-border"
       >
-        <div className="w-10 h-10 rounded-xl bg-[#25D366]/10 flex items-center justify-center">
-          <WhatsappIcon className="w-6 h-6 text-[#25D366]" />
-        </div>
+        <Brain className="w-8 h-8 text-[oklch(0.55_0.2_250)] shrink-0" strokeWidth={2.2} />
         <span className="font-heading text-lg font-bold text-foreground leading-tight">
           Lekajio <span className="text-gradient">Software</span>
         </span>
-        <Brain className="w-6 h-6 text-[oklch(0.55_0.2_250)] ml-auto" strokeWidth={2.2} />
       </Link>
 
       <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
@@ -101,13 +97,10 @@ export default function Sidebar() {
       <header className="md:hidden fixed top-0 left-0 right-0 z-40 glass-surface border-b border-border">
         <div className="flex items-center justify-between px-4 h-16">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-[#25D366]/10 flex items-center justify-center">
-              <WhatsappIcon className="w-5 h-5 text-[#25D366]" />
-            </div>
+            <Brain className="w-7 h-7 text-[oklch(0.55_0.2_250)] shrink-0" strokeWidth={2.2} />
             <span className="font-heading text-base font-bold">
               Lekajio <span className="text-gradient">Software</span>
             </span>
-            <Brain className="w-5 h-5 text-[oklch(0.55_0.2_250)]" strokeWidth={2.2} />
           </Link>
           <div className="flex items-center gap-2">
             <UserMenu compact />
